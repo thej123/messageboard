@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>signature</title>
+  <meta charset="utf-8">
+  <style type="text/css">
+  </style>
+</head>
+<body>
+    MY MESSAGE<br><br>
+    <textarea id="text_area" rows="10" cols="50" maxlength="140"></textarea>
+    <h1 id="characters_left">140 characters left</h1>
+    <h1 id="last_key" value=""></h1>
+<script type="text/javascript">
+    // Listen to key up
+    document.getElementById('text_area').addEventListener('keyup', textLengthCheck)
+
+    // modify the H1 innerhtmls as required.
+    function textLengthCheck(){
+        
+        let message = document.getElementById('text_area').value;
+        let space_left = 140 - message.length;
+        let characters_left = document.getElementById('characters_left');
+        let last_key = document.getElementById('last_key');
+
+        if (space_left)
+            characters_left.innerHTML = space_left + " Characters left."
+        else
+            characters_left.innerHTML = "0 Characters. Stop now"
+        
+        if (message)
+            last_key.innerHTML = "Last key in ASCII code: " + message.charCodeAt(message.length-1)
+        else
+            last_key.innerHTML = '';
+    }
+</script>
+</body>
+</html>
